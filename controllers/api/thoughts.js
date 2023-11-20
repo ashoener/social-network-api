@@ -8,4 +8,9 @@ router.get("/", async (req, res) => {
   res.json(thoughts);
 });
 
+router.get("/:id", async (req, res) => {
+  const thought = await Thought.findById(req.params.id).select("-__v");
+  res.json(thought);
+});
+
 export default router;
