@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { User } from "../../lib/models/index.js";
+import { Thought, User } from "../../lib/models/index.js";
 
 const router = Router();
 
@@ -34,6 +34,15 @@ router.put("/:id", async (req, res) => {
     }
   );
   res.json(user);
+});
+
+router.delete("/:id", async (req, res) => {
+  const user = await User.findOneAndDelete({ _id: req.params.id });
+  if (user) {
+    await Thought.deleteMany({ username: user.username });
+  }
+
+  res.json({ success: true });
 });
 
 export default router;
