@@ -8,4 +8,11 @@ router.get("/", async (req, res) => {
   res.json(users);
 });
 
+router.get("/:id", async (req, res) => {
+  const user = await User.findById(req.params.id)
+    .select("-__v")
+    .populate(["thoughts", "friends"]);
+  res.json(user);
+});
+
 export default router;
