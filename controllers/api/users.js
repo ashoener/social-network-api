@@ -23,4 +23,17 @@ router.post("/", async (req, res) => {
   res.json(user);
 });
 
+router.put("/:id", async (req, res) => {
+  const user = await User.updateOne(
+    {
+      _id: req.params.id,
+    },
+    {
+      username: req.body.username,
+      email: req.body.email,
+    }
+  );
+  res.json(user);
+});
+
 export default router;
