@@ -3,7 +3,7 @@ import loadRoutes from "./lib/routeLoader.js";
 import "dotenv/config";
 
 import db from "./lib/config/connection.js";
-import { User } from "./lib/models/index.js";
+import { User, Thought } from "./lib/models/index.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
