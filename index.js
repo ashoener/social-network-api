@@ -1,5 +1,6 @@
 import express from "express";
-import loadRoutes from "./lib/routeLoader";
+import loadRoutes from "./lib/routeLoader.js";
+import "dotenv/config";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
