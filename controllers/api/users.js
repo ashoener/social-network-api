@@ -23,6 +23,15 @@ router.post("/", async (req, res) => {
   res.json(user);
 });
 
+router.route("/:id/friends/:friendId").post(async (req, res) => {
+  const user = await User.updateOne(
+    { _id: req.params.id },
+    { $addToSet: { friends: req.params.friendId } },
+    { new: true }
+  );
+  res.json(user);
+});
+
 router.put("/:id", async (req, res) => {
   const user = await User.updateOne(
     {
