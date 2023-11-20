@@ -1,0 +1,24 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "author": "Andrew Shoener",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ashoener/social-network-api.git"
+  },
+  "main": "index.js",
+  "module": "index.js",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/ashoener/social-network-api/issues"
+  },
+  "description": "",
+  "homepage": "https://github.com/ashoener/social-network-api#readme",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module"
+}
