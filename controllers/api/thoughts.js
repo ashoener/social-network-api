@@ -31,4 +31,16 @@ router.post("/", async (req, res) => {
   res.json(thought);
 });
 
+router.put("/:id", async (req, res) => {
+  const thought = await Thought.updateOne(
+    {
+      _id: req.params.id,
+    },
+    {
+      thoughtText: req.body.thoughtText,
+    }
+  );
+  res.json(thought);
+});
+
 export default router;
