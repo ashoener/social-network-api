@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import { faker } from "@faker-js/faker";
 import { User, Thought } from "./lib/models/index.js";
 import db from "./lib/config/connection.js";
