@@ -43,4 +43,17 @@ router.put("/:id", async (req, res) => {
   res.json(thought);
 });
 
+router.delete("/:id", async (req, res) => {
+  const thought = await Thought.findOneAndDelete({ _id: req.params.id });
+  if (thought) {
+    await User.updateOne(
+      { username: thought.username },
+      { $pull: { thoughts: thought._id } }
+    );
+    res.json(thought);
+  } else {
+    res.status(404).json({ success: false, error: "Thought not found" });
+  }
+});
+
 export default router;
