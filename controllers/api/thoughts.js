@@ -56,19 +56,29 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.route("/:id/reactions").post(async (req, res) => {
-  const thought = await Thought.updateOne(
-    { _id: req.params.id },
-    {
-      $addToSet: {
-        reactions: {
-          reactionBody: req.body.reactionBody,
+router
+  .route("/:id/reactions")
+  .post(async (req, res) => {
+    const thought = await Thought.updateOne(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          reactions: {
+            reactionBody: req.body.reactionBody,
+          },
         },
       },
-    },
-    { new: true }
-  );
-  res.json(thought);
-});
+      { new: true }
+    );
+    res.json(thought);
+  })
+  .delete(async (req, res) => {
+    const thought = await Thought.updateOne(
+      { _id: req.params.id },
+      { $pull: { reactions: { reactionId: req.body.reactionId } } },
+      { new: true }
+    );
+    res.json(thought);
+  });
 
 export default router;
