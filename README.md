@@ -51,7 +51,7 @@ Currently, there are no tests included with this project. They may be created in
 
 ## Questions
 
-If you have any questions, you may contact me via [GitHub](ashoener) or by [email](mailto:a.b.shoener@gmail.com).
+If you have any questions, you may contact me via [GitHub](https://github.com/ashoener) or by [email](mailto:a.b.shoener@gmail.com).
 
 ## License
 
