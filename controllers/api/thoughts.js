@@ -56,4 +56,19 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.route("/:id/reactions").post(async (req, res) => {
+  const thought = await Thought.updateOne(
+    { _id: req.params.id },
+    {
+      $addToSet: {
+        reactions: {
+          reactionBody: req.body.reactionBody,
+        },
+      },
+    },
+    { new: true }
+  );
+  res.json(thought);
+});
+
 export default router;
