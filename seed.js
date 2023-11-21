@@ -4,6 +4,17 @@ import { faker } from "@faker-js/faker";
 import { User, Thought } from "./lib/models/index.js";
 import db from "./lib/config/connection.js";
 
+// Seeding animation
+const frames = ["|", "/", "—", "\\"];
+let frame = 0;
+process.stdout.write(`Seeding (${frames[frame]})`);
+const seedingAnimation = setInterval(() => {
+  frame++;
+  if (frame > frames.length - 1) frame = 0;
+  process.stdout.cursorTo(0);
+  process.stdout.write(`Seeding (${frames[frame]})`);
+}, 150);
+
 await db.asPromise();
 
 faker.seed(0);
@@ -48,4 +59,11 @@ for (let i = 0; i < users.length; i++) {
   await user.save();
 }
 
+// Clean up seeding animation
+clearInterval(seedingAnimation);
+
+process.stdout.clearLine(0);
+process.stdout.cursorTo(0);
+
+console.log("Successfully seeded db");
 process.exit(0);
